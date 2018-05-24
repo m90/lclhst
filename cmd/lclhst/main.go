@@ -11,12 +11,12 @@ import (
 
 func main() {
 	var (
-		port     = flag.Int("port", 8080, "the port of the application")
-		deadline = flag.Duration("deadline", 10*time.Second, "deadline for giving up")
+		port    = flag.Int("port", 8080, "the port of the application")
+		timeout = flag.Duration("timeout", 10*time.Second, "timeout for giving up")
 	)
 	flag.Parse()
 
-	if err := lclhst.WaitFor(*deadline, *port); err != nil {
+	if err := lclhst.WaitDuration(*timeout, *port); err != nil {
 		fmt.Printf("%v\n", err)
 		os.Exit(1)
 	}
