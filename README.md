@@ -21,10 +21,22 @@ go get github.com/m90/lclhst
 
 ## Usage
 
+In integration tests for servers, use `Wait` before running the tests for func `main`:
+
+```go
+func TestMain(m *testing.M) {
+    go main()
+    lclhst.Wait(8080)
+		os.Exit(m.Run())
+}
+```
+
+---
+
 Use the command before running anything that expects localhost to be up:
 
 ```sh
-lclhst && echo "OK!"
+lclhst && curl localhost:8080
 ```
 
 The following options are available:
