@@ -16,7 +16,7 @@ go get github.com/m90/lclhst
 
 Install the command:
 ```sh
-go get github.com/m90/lclhst
+go get github.com/m90/lclhst/cmd/lclhst
 ```
 
 ## Usage
@@ -27,7 +27,7 @@ In integration tests for servers, use `Wait` before running the tests for func `
 func TestMain(m *testing.M) {
     go main()
     lclhst.Wait(8080)
-		os.Exit(m.Run())
+    os.Exit(m.Run())
 }
 ```
 
